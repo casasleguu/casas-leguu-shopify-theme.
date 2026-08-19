@@ -1,0 +1,59 @@
+<div id="shopify-section-template--18002632376469__inifinite_bar_WEiwTf" class="shopify-section inifinite-bar-section">
+  <style>
+    /* Seu CSS aqui */
+    @keyframes infiniteScroll {
+      from {transform: translateX(0)}
+      to {transform: translateX(-50%)}
+    }
+    .container {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    .horizontal-scrolling-items {
+      gap: 56px;
+      display: flex;
+      font-size: 25px;
+      font-weight: bold;
+      width: 2600px;
+      animation-name: infiniteScroll;
+      animation-duration: 20s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    .horizontal-scrolling-items__item {
+      white-space: nowrap;
+      text-transform: uppercase;
+      font-family: "Formular", sans-serif;
+    }
+  </style>
+
+  <div class="container" style="background-color: #ffffff; padding: 8px">
+    <div class="horizontal-scrolling-items">
+      <!-- Seus itens roláveis aqui -->
+      <div class="horizontal-scrolling-items__item" style="color: #000000;"><b>Frete Grátis para Todo Brasil!</b></div>
+      <div class="horizontal-scrolling-items__item" style="color: #000000;"><b>Troca rápida e grátis</b></div>
+      <div class="horizontal-scrolling-items__item" style="color: #000000;"><b>Promoções Exclusivas</b></div>
+      <div class="horizontal-scrolling-items__item" style="color: #000000;"><b>Parcelamento em até 6x Sem Juros</b></div>
+      <!-- Repita os itens conforme necessário -->
+    </div>
+  </div>
+
+  <script>
+    // Seu JavaScript aqui
+    const scrollerInner = document.querySelector(".horizontal-scrolling-items");
+    const scrollerContent = Array.from(scrollerInner.children);
+    const secondCopy = [];
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerInner.appendChild(duplicatedItem);
+      secondCopy.push(duplicatedItem);
+    });
+    secondCopy.forEach((item) => {
+      document.querySelector(".horizontal-scrolling-items").innerHTML += item.outerHTML;
+    });
+    secondCopy.forEach((item) => {
+      document.querySelector(".horizontal-scrolling-items").innerHTML += item.outerHTML;
+    });
+  </script>
+</div>
