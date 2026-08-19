@@ -1,0 +1,102 @@
+<section id="coupon-bar-{{ section.id }}" role="region" aria-label="Cupom de boas-vindas">
+  <div class="coupon-inner page-width">
+    <p class="coupon-text">
+      {{ section.settings.text_before }} <strong>{{ section.settings.coupon }}</strong> {{ section.settings.text_after }}
+      {% if section.settings.conditions_url != blank %}
+        <a href="{{ section.settings.conditions_url }}" class="coupon-link">{{ section.settings.conditions_label }}</a>
+      {% endif %}
+    </p>
+    <button
+      type="button"
+      class="coupon-btn"
+      data-coupon="{{ section.settings.coupon }}"
+      aria-live="polite"
+      aria-label="Copiar cupom {{ section.settings.coupon }}"
+    >
+      {{ section.settings.button_label }}
+    </button>
+  </div>
+
+  <style>
+    #coupon-bar-{{ section.id }}{width:100%;background:{{ section.settings.bg }};border-top:1px solid {{ section.settings.border_top }};border-bottom:1px dashed {{ section.settings.border_bottom }}}
+    #coupon-bar-{{ section.id }} .coupon-inner{max-width:min(1200px, calc(100vw - 32px));margin:0 auto;padding:10px 16px;display:flex;gap:16px;align-items:center;justify-content:space-between}
+    #coupon-bar-{{ section.id }} .coupon-text{margin:0;font-size:{{ section.settings.font_size }}px;color:{{ section.settings.text_color }}}
+    #coupon-bar-{{ section.id }} .coupon-link{color:{{ section.settings.link_color }};text-decoration:underline}
+    #coupon-bar-{{ section.id }} .coupon-btn{cursor:pointer;font-size:13px;padding:8px 14px;border:1px dashed {{ section.settings.button_border }};background:{{ section.settings.button_bg }};color:{{ section.settings.button_color }};border-radius:6px}
+    #coupon-bar-{{ section.id }} .coupon-btn.is-copied{border-style:solid}
+    @media (max-width:700px){
+      #coupon-bar-{{ section.id }} .coupon-inner{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      var btn = document.querySelector('#coupon-bar-{{ section.id }} .coupon-btn');
+      if(!btn) return;
+      var original = btn.textContent;
+      function copyText(text){
+        if(navigator.clipboard && window.isSecureContext){
+          return navigator.clipboard.writeText(text);
+        }
+        return new Promise(function(resolve,reject){
+          try{
+            var ta=document.createElement('textarea');
+            ta.value=text;
+            ta.setAttribute('readonly','');
+            ta.style.position='fixed';
+            ta.style.top='-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            resolve();
+          }catch(e){reject(e);}
+        });
+      }
+      btn.addEventListener('click', function(){
+        var code = this.getAttribute('data-coupon');
+        copyText(code).then(()=>{
+          this.textContent = '{{ section.settings.button_copied }}';
+          this.classList.add('is-copied');
+          this.setAttribute('aria-label','Cupom copiado: '+code);
+          setTimeout(()=>{
+            this.textContent = '{{ section.settings.button_label }}';
+            this.classList.remove('is-copied');
+            this.setAttribute('aria-label','Copiar cupom '+code);
+          }, 2500);
+        }).catch(()=>{
+          alert('Não foi possível copiar automaticamente. Use: '+code);
+        });
+      });
+    });
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Barra de cupom copiável",
+  "settings": [
+    { "type": "text", "id": "text_before", "label": "Texto antes do cupom", "default": "Use o cupom" },
+    { "type": "text", "id": "coupon", "label": "Cupom", "default": "PRIMEIRA10" },
+    { "type": "text", "id": "text_after", "label": "Texto após o cupom", "default": "e ganhe 10% OFF na primeira compra." },
+    { "type": "url",  "id": "conditions_url", "label": "Link de condições" },
+    { "type": "text", "id": "conditions_label", "label": "Texto do link", "default": "Ver condições" },
+
+    { "type": "text", "id": "button_label", "label": "Texto do botão", "default": "COPIAR" },
+    { "type": "text", "id": "button_copied", "label": "Texto quando copiado", "default": "COPIADO!" },
+
+    { "type": "color", "id": "bg", "label": "Fundo", "default": "#f7f7f7" },
+    { "type": "color", "id": "border_top", "label": "Borda superior", "default": "#e5e5e5" },
+    { "type": "color", "id": "border_bottom", "label": "Borda inferior tracejada", "default": "#bbbbbb" },
+    { "type": "color", "id": "text_color", "label": "Cor do texto", "default": "#111111" },
+    { "type": "color", "id": "link_color", "label": "Cor do link", "default": "#0a57ff" },
+    { "type": "range", "id": "font_size", "label": "Tamanho do texto", "min": 12, "max": 18, "step": 1, "default": 14 },
+    { "type": "color", "id": "button_bg", "label": "Fundo do botão", "default": "#ffffff" },
+    { "type": "color", "id": "button_color", "label": "Texto do botão", "default": "#111111" },
+    { "type": "color", "id": "button_border", "label": "Borda do botão", "default": "#444444" }
+  ],
+  "presets": [
+    { "name": "Barra de cupom copiável" }
+  ]
+}
+{% endschema %}

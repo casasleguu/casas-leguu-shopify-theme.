@@ -1,0 +1,1014 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "meta": {
+      "page": "Page {{ page }}"
+    },
+    "label": {
+      "color": "Color,Colour",
+      "white": "White",
+      "size": "Size"
+    },
+    "breadcrumb": {
+      "title": "Breadcrumb",
+      "home": "Home"
+    },
+    "pagination": {
+      "previous_page": "Previous",
+      "next_page": "Next",
+      "go_to_page": "Navigate to page {{page}}"
+    },
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close": "Close",
+      "previous": "Previous",
+      "next": "Next",
+      "play_video": "Play video",
+      "go_to_slide": "Go to slide {{num}}",
+      "delete": "Delete",
+      "show_product": "Show product {{title}}",
+      "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars"
+    },
+    "social": {
+      "facebook_share": "Share on Facebook",
+      "pinterest_pin": "Pin on Pinterest",
+      "twitter_tweet": "Tweet on Twitter",
+      "email_share": "Share by e-mail",
+      "email_label": "E-mail",
+      "follow_label": "Follow us on {{ social_media }}"
+    },
+    "newsletter": {
+      "email": "Your e-mail",
+      "subscribe": "Subscribe",
+      "success": "You have been subscribed to our newsletter"
+    },
+    "faq": {
+      "categories": "Categories"
+    },
+    "onboarding": {
+      "blog_post_category": "Category",
+      "blog_post_title": "Article",
+      "product_vendor": "Vendor",
+      "product_title": "Product",
+      "product_description": "Write text about your product.",
+      "collection_title": "Collection"
+    }
+  },
+  "header": {
+    "general": {
+      "navigation": "Navigation",
+      "newsletter": "Newsletter",
+      "login": "Login",
+      "account": "Account",
+      "cart": "Cart",
+      "language": "Language",
+      "country": "Country/region"
+    }
+  },
+  "footer": {
+    "general": {
+      "language": "Language",
+      "country": "Country/region",
+      "we_accept": "We accept"
+    },
+    "newsletter": {
+      "email": "Your e-mail",
+      "submit": "Register",
+      "success": "You have been registered to our newsletter."
+    },
+    "cookie_bar": {
+      "accept": "Accept",
+      "decline": "Decline"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "empty": "Your cart is empty",
+      "start_shopping": "Start shopping",
+      "free_shipping": "You are eligible for free shipping!",
+      "free_shipping_remaining_html": "Spend {{ remaining_amount }} more and get free shipping!",
+      "free": "Free!",
+      "no_more_stock": "No more stock",
+      "shipping_tax_note": "Shipping & taxes calculated at checkout",
+      "product": "Product",
+      "quantity": "Quantity",
+      "decrease_quantity": "Decrease quantity",
+      "increase_quantity": "Increase quantity",
+      "change_quantity": "Change quantity",
+      "remove": "Remove",
+      "order_note": "Order note",
+      "add_order_note": "Add order note",
+      "edit_order_note": "Edit order note",
+      "order_note_placeholder": "How can we help you?",
+      "order_note_save": "Save",
+      "total": "Total",
+      "checkout": "Checkout",
+      "go_to_cart": "Go to cart",
+      "we_accept": "We accept",
+      "item_added": "Item added to your cart!",
+      "item_added_short": "Added to your cart!",
+      "view_cart": "View cart",
+      "item_count": {
+        "zero": "{{ count }} items",
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    },
+    "shipping_estimator": {
+      "estimate_shipping": "Estimate shipping",
+      "country": "Country",
+      "province": "Province",
+      "zip_code": "Zip code",
+      "submit": "Estimate",
+      "no_results": "Sorry, we do not ship to your address.",
+      "one_result": "There is one shipping rate for your address:",
+      "multiple_results": "There are several shipping rates for your address:",
+      "error": "One or more error occurred while retrieving shipping rates:"
+    },
+    "instagram": {
+      "blocks": {
+        "instagram": {
+          "enable": "Activate?"
+        }
+      },
+      "settings": {
+        "display_icon_more": "Does it show too many icons?",
+        "hide_image_portion": "Cut a portion of the sides of the block",
+        "type_instagram": {
+          "option": "Choose the type of Instagram",
+          "option1": "Use app code",
+          "option2": "Use image gallery",
+          "grid": "Grid"
+        },
+        "type_button_more": {
+          "option": "Button type",
+          "option1": "Block: Load more",
+          "option2": "Redirect to URL"
+        },
+        "type_app": {
+          "content": "Settings for embedding an app",
+          "embed_code": "Embed Javascript"
+        },
+        "type_image": {
+          "content": "Image settings",
+          "embed_code": "Insert JavaScript code",
+          "type_instagram_by_gallery": {
+            "option": "When you click on the image",
+            "option1": "Redirect to URL",
+            "option2": "Open fancybox"
+          }
+        },
+        "limit": "Limit the number of images to display.",
+        "images_per_row": {
+          "option": "Images per Line"
+        },
+        "grid_gap": "Gap in the grid",
+        "slide_ins": {
+          "option1": "Central mode",
+          "option2": "Standard"
+        },
+        "display_arrow": "Show arrow?",
+        "slide_rows": {
+          "option": "Slide lines"
+        },
+        "content": "Content",
+        "effects_image": "Image effects"
+      }
+    }
+  },
+  "collection": {
+    "general": {
+      "filters": "Filters",
+      "show_filters": "Show filters",
+      "all_products": "All products",
+      "view_results": "View results",
+      "apply_filters": "Apply filters",
+      "clear_filters": "Clear all",
+      "price_range_to": "to",
+      "price_filter_from": "From price",
+      "price_filter_to": "To price",
+      "price_filter": "{{min_price}} - {{max_price}}",
+      "no_results_title": "No results",
+      "no_results_label": "Sorry, your search did not yield any results.",
+      "no_results_button": "Reset filters",
+      "empty_title": "Empty collection",
+      "empty_label": "This collection does not contain any products.",
+      "empty_button": "Shop now",
+      "sort_by": "Sort by",
+      "products_count": {
+        "zero": "{{ count }} products",
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
+    },
+    "product": {
+      "sold_out": "Sold out",
+      "discount_html": "Save {{ savings }}",
+      "from_price_html": "From {{ price_min }}",
+      "add_to_cart": "+ Add to cart",
+      "add_to_cart_short": "+ Add to cart",
+      "quick_view": "Quick view",
+      "available_colors_count": {
+        "one": "{{ count }} color available",
+        "other": "{{ count }} colors available"
+      }
+    }
+  },
+  "product": {
+    "general": {
+      "description": "Description",
+      "reviews": "Reviews ({{ rating_count }})",
+      "sku": "SKU:",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "view_in_space": "View in your space",
+      "zoom": "Zoom",
+      "share": "Share",
+      "size_chart": "Size chart",
+      "need_help": "Need help?",
+      "view_details": "View details",
+      "include_taxes": "Tax included.",
+      "shipping_policy_html": "<a href=\"{{ link }}\" class=\"link link--accented\">Shipping calculated</a> at checkout",
+      "reviews_count": {
+        "zero": "No reviews",
+        "one": "{{ count }} review",
+        "other": "{{ count }} reviews"
+      }
+    },
+    "form": {
+      "choose_options": "Choose options",
+      "quantity": "Quantity",
+      "variant": "Variant",
+      "unavailable": "Unavailable",
+      "pre_order": "Pre-order",
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "in_stock": "In stock",
+      "oversell_stock": "Re-stocking soon",
+      "incoming_stock": "Re-stocking on {{ next_incoming_date }}",
+      "low_stock_with_quantity_count": {
+        "one": "Only {{count}} unit left",
+        "other": "Only {{count}} units left"
+      },
+      "contact_us": "Contact us"
+    }
+  },
+  "store_availability": {
+    "general": {
+      "view_store_info": "View store information",
+      "check_other_stores": "Check availability at other stores",
+      "pick_up_available": "Pickup available",
+      "pick_up_currently_unavailable": "Pickup currently unavailable",
+      "pick_up_available_at": "Pickup available at {{ location_name }}",
+      "pick_up_unavailable_at": "Pickup currently unavailable at {{ location_name }}"
+    }
+  },
+  "list_collections": {
+    "general": {
+      "title": "Collections",
+      "empty": "This store does not contain any collection.",
+      "back_to_home": "Back to home page",
+      "products_count": {
+        "zero": "No products",
+        "one": "{{count}} product",
+        "other": "{{count}} products"
+      }
+    }
+  },
+  "blog": {
+    "general": {
+      "empty": "This blog has no articles",
+      "back_to_home": "Back to home",
+      "view": "View",
+      "all_posts": "All posts"
+    }
+  },
+  "article": {
+    "general": {
+      "written_by": "By {{ author }}",
+      "share": "Share",
+      "next": "Next",
+      "reading": "Reading",
+      "tags": "Tags",
+      "continue_reading": "Continue reading",
+      "reading_time": {
+        "zero": "{{ count }} minutes",
+        "one": "{{ count }} minute",
+        "other": "{{ count }} minutes"
+      }
+    },
+    "comments": {
+      "leave_comment": "Leave a comment",
+      "moderated": "All comments are moderated before being published.",
+      "name": "Name",
+      "email": "E-mail",
+      "message": "Message",
+      "submit": "Submit",
+      "comment_sent": "Your comment has been sent. It will be visible once the shop owner has accepted it!",
+      "comment_published": "Your comment has been published.",
+      "comments_count": {
+        "zero": "{{ count }} comments",
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    }
+  },
+  "customer": {
+    "general": {
+      "title": "My account"
+    },
+    "login": {
+      "title": "Login",
+      "instructions": "Please enter your e-mail and password:",
+      "email": "E-mail",
+      "password": "Password",
+      "submit": "Login",
+      "forgot_password": "Forgot password?",
+      "new_customer": "New customer?",
+      "create_account": "Create an account"
+    },
+    "recover_password": {
+      "title": "Recover password",
+      "instructions": "Please enter your e-mail:",
+      "email": "E-mail",
+      "submit": "Recover",
+      "remember_password": "Remember your password?",
+      "back_to_login": "Back to login",
+      "success": "An e-mail has been sent to your address with instructions to recover your password."
+    },
+    "activate_account": {
+      "title": "Activate account",
+      "instructions": "Enter a password to create your account:",
+      "password": "Password",
+      "password_confirmation": "Password confirmation",
+      "submit": "Activate",
+      "cancel": "Cancel"
+    },
+    "reset_password": {
+      "title": "Reset password",
+      "instructions": "Enter a new password for your account:",
+      "password": "Password",
+      "password_confirmation": "Password confirmation",
+      "submit": "Reset"
+    },
+    "register": {
+      "title": "Register",
+      "instructions": "Please fill in the fields below:",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "E-mail",
+      "password": "Password",
+      "submit": "Create account",
+      "already_have_account": "Already have an account?",
+      "login": "Login"
+    },
+    "orders": {
+      "title": "Orders",
+      "no_orders": "You have not placed any orders yet.",
+      "start_shopping": "Start shopping",
+      "back_to_orders": "Back to orders",
+      "number": "Order number",
+      "order_name": "Order {{name}}",
+      "date": "Date",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfillment status",
+      "view_details": "View order details",
+      "cancelled_at": "Cancelled at: {{date}}. Reason: {{reason}}",
+      "fulfillment_with_url_and_number_html": "All products have been sent on {{date}}. Track the shipment with number {{tracking_number}} or by <a href=\"{{tracking_url}}\" target=\"_blank\">clicking here</a>.",
+      "fulfillment_with_url_html": "All products have been sent on {{date}}. Track the shipment by <a href=\"{{tracking_url}}\" target=\"_blank\">clicking here</a>.",
+      "fulfillment_with_number_html": "All products have been sent on {{date}}. Track the shipment with number {{tracking_number}}.",
+      "fulfillment_html": "All products have been sent on {{date}}.",
+      "line_fulfillment_with_url_and_number_html": "This product has been sent on {{date}}. Track the shipment with number {{tracking_number}} or by <a href=\"{{tracking_url}}\" target=\"_blank\">clicking here</a>.",
+      "line_fulfillment_with_url_html": "This product has been sent on {{date}}. Track the shipment by <a href=\"{{tracking_url}}\" target=\"_blank\">clicking here</a>.",
+      "line_fulfillment_with_number_html": "This product has been sent on {{date}}. Track the shipment with number {{tracking_number}}.",
+      "line_fulfillment_html": "This product has been sent on {{date}}.",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "total_duties": "Duties",
+      "refunded_amount": "Refunded amount",
+      "tax_included": "Tax included",
+      "tax_excluded": "Tax excluded",
+      "quantity": "Quantity: {{quantity}}",
+      "shipping_address": "Shipping address",
+      "billing_address": "Billing address"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "no_address": "You have not saved any addresses yet.",
+      "add_new": "Add a new address",
+      "edit": "Edit",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you wish to delete this address?",
+      "save": "Save",
+      "default_address": "Default address",
+      "address_count": "Address {{count}}",
+      "fill_address": "Please fill in the fields below:",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "phone": "Phone number",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "zip": "Zip code",
+      "country": "Country",
+      "province": "Province",
+      "set_default": "Set as default"
+    },
+    "logout": {
+      "title": "Logout"
+    }
+  },
+  "search": {
+    "general": {
+      "title": "Search",
+      "terms": "Results for \"{{terms}}\"",
+      "search_placeholder": "What are you looking for?",
+      "no_results": "No results could be found.",
+      "new_search": "New search",
+      "view_all_results": "View all results",
+      "products": "Products",
+      "articles": "Journal",
+      "pages": "Pages",
+      "collections": "Collections"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "E-mail",
+      "message": "Message",
+      "submit": "Send Message",
+      "successfully_sent": "Your e-mail has been sent."
+    }
+  },
+  "gift_card": {
+    "issued": {
+      "subtext": "Here's your gift card!",
+      "illustration": "Gift card illustration",
+      "disabled": "Your gift card is disabled.",
+      "expired": "Your gift card expired on {{expiry}}.",
+      "expires_on": "Expires on {{expiry}}",
+      "redeem": "Use this code at checkout to redeem your gift card:",
+      "remaining_amount_html": "Remaining amount: {{balance}} (out of {{initial_value}})",
+      "print": "Print",
+      "scan_qr_code": "Scan this QR code:",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "go_to_store": "Go to the store"
+    }
+  },
+  "password": {
+    "general": {
+      "store_owner": "Store owner?",
+      "login": "Login here",
+      "powered_by": "This store will be powered by",
+      "enter_password": "Enter using password"
+    },
+    "password": {
+      "label": "Please enter password to access the store",
+      "input": "Password",
+      "submit": "Enter"
+    },
+    "newsletter": {
+      "success": "You have been registered to our newsletter",
+      "email": "Your e-mail",
+      "submit": "Notify me"
+    }
+  },
+  "404": {
+    "general": {
+      "title": "Page not found",
+      "description": "Sorry, this page does not exist.",
+      "back_to_home": "Back to home"
+    }
+  },
+  "shopify": {
+    "checkout": {
+      "general": {
+        "map": {
+          "cluster_title": {
+            "many": "Cluster of {{number}} markers"
+          }
+        }
+      },
+      "customer_account": {
+        "saved_address_option_description": {
+          "many": "You have {{count}} saved addresses."
+        }
+      },
+      "stock": {
+        "unshippable_product": {
+          "header": {
+            "many": "No delivery available for %{count} items"
+          },
+          "message": {
+            "many": "These items will be removed from your cart because there are no delivery methods available for your address."
+          }
+        },
+        "item_label": {
+          "many": "{{count}} items"
+        },
+        "unfulfillable_product": {
+          "message": {
+            "many": "%{delivery_method} is no longer available for these items."
+          },
+          "default_message": {
+            "many": "The chosen delivery method is no longer available for these items."
+          }
+        }
+      },
+      "order_summary": {
+        "unit_price": {
+          "per_item": {
+            "many": "%{price} per %{count} items"
+          }
+        },
+        "expand_component_information": {
+          "many": "Show %{count} items"
+        },
+        "collapse_component_information": {
+          "many": "Hide %{count} items"
+        },
+        "discount_discovery": {
+          "merchandise_quantity_label": {
+            "many": "%{count} items"
+          }
+        },
+        "discount_title_stacking": {
+          "many": "Discounts"
+        },
+        "discount_order_stacking": {
+          "many": "Discounts on your order"
+        },
+        "subtotal_label_with_quantity": {
+          "many": "Subtotal · %{count} items"
+        },
+        "number_items": {
+          "many": "%{count} items"
+        },
+        "view_all_items": {
+          "many": "View all %{count} items"
+        },
+        "pickup_unavailable_banner_title": {
+          "many": "There are no stores available that carry your items."
+        },
+        "pickup_unavailable_banner_title_with_country": {
+          "many": "There are no stores available in the country %{country} with your items."
+        }
+      },
+      "shipping": {
+        "estimated_delivery_date": {
+          "many": "%{count} working days"
+        },
+        "other_method": {
+          "many": "%{count} other methods starting from"
+        },
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "many": "for %{count} deliveries"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "many": "every %{count} days"
+            },
+            "week": {
+              "many": "every %{count} weeks"
+            },
+            "month": {
+              "many": "every %{count} months"
+            },
+            "year": {
+              "many": "every %{count} years"
+            }
+          },
+          "first_n_order_free": {
+            "many": "First %{count} orders free"
+          },
+          "free_for_first_n_order": {
+            "many": "For the first %{count} orders"
+          },
+          "free_shipping_cycles": {
+            "many": "Free shipping on orders over %{count} deliveries"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "many": "Free shipping for %{count} deliveries"
+          },
+          "first_n_order_free_with_cycle": {
+            "many": "Free shipping on orders over %{count}, after %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "many": "Free shipping for %{count} deliveries, after %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "many": "More %{count} deliveries for %{shipping_price} each"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "many": "More %{count} deliveries for %{shipping_price} each"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "many": "Free shipping for the first %{cycle}, then %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "many": "%{shipping_price} for more %{count} deliveries (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "many": "%{shipping_price} for %{count} deliveries (%{per_delivery_cost})"
+          },
+          "prepaid_order_no_cycle": {
+            "many": "%{shipping_price} for more than %{count} deliveries (%{per_delivery_cost}), then %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "many": "%{shipping_price} for %{count} deliveries (%{per_delivery_cost}), then %{recurring_order_shipping_price}"
+          }
+        },
+        "shipping_method_first_shipment_group_title": {
+          "many": "First shipments"
+        },
+        "shipping_method_recurring_shipments_group_title": {
+          "many": "Recurring remittances"
+        },
+        "unbranded_description_with_fulfillment_days": {
+          "many": "Shipping in %{count} business days"
+        },
+        "unbranded_description_with_fulfillment_weeks": {
+          "many": "Shipping in %{count} weeks"
+        }
+      },
+      "payment": {
+        "order_covered_by_gift_cards_notice": {
+          "many": "Your gift cards cover the order."
+        },
+        "card_fields_unavailable_html": {
+          "many": "Credit and debit card payments are not currently available.<br> <a href=\"%{current_url}\">Refresh this page</a> or try a different payment method."
+        },
+        "expired_cards_info": {
+          "many": "There are %{count} expired cards, which you can view and edit in your account."
+        },
+        "order_edit_banner_items_added": {
+          "many": "Inclusion of %{count}"
+        },
+        "discount_show_more_warnings": {
+          "many": "Show more %{count}"
+        },
+        "discount_codes_removed_summary": {
+          "many": "%{count} discount codes have been removed."
+        },
+        "discount_codes_modified_summary": {
+          "many": "%{count} modified discount codes"
+        },
+        "discount_codes_removed_or_modified_summary": {
+          "many": "%{count} discount codes removed or modified"
+        }
+      },
+      "shipping_errors": {
+        "shipping_method_not_available_generic": {
+          "many": "We are unable to ship some items from your cart to the address provided. Please confirm that the address is correct and try again, or select a different address."
+        },
+        "shipping_method_not_available_updated": {
+          "many": "One or more of the items you added are not being shipped to your location. Remove them to complete your purchase or contact the store."
+        }
+      },
+      "processing": {
+        "wait": {
+          "medium": {
+            "many": "Your order is being processed. The estimated waiting time is %{count} minutes."
+          }
+        }
+      },
+      "thank_you": {
+        "login_reorder_link_text": {
+          "many": "Buy these products too."
+        },
+        "gift_card_confirmation_by_text_typ": {
+          "many": "You will receive a text message with your gift cards in a few minutes."
+        },
+        "gift_card_confirmation_by_email_typ": {
+          "many": "You will receive an email with your gift cards within a few minutes."
+        },
+        "gift_card_email_title": {
+          "many": "The gift cards were sent by email."
+        },
+        "gift_card_text_title": {
+          "many": "The gift cards were sent via text message."
+        },
+        "gift_card_resent_confirmation": {
+          "many": "The gift cards have been resent."
+        },
+        "gift_card_resend_failure": {
+          "many": "There was a problem resending the gift cards. Please try again or contact us."
+        },
+        "thank_you_unconfirmed_items_heading": {
+          "many": "Some items have not been confirmed."
+        },
+        "thank_you_unconfirmed_items_description": {
+          "many": "You did not receive any charges for them."
+        },
+        "thank_you_item_label": {
+          "many": "%{count} items"
+        },
+        "items_fulfilled_by_store": {
+          "many": "The items you purchased will come from other stores."
+        }
+      },
+      "order_payment_collection": {
+        "changes_summary": {
+          "added": {
+            "many": "Inclusion of %{count}"
+          }
+        }
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "many": "Buy %{product_name} and %{count} other items"
+        }
+      },
+      "subscriptions": {
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "many": "First %{count} payments of %{total_price} each"
+          }
+        },
+        "recurring_total_intervals": {
+          "day": {
+            "many": "%{count} days"
+          },
+          "week": {
+            "many": "%{count} weeks"
+          },
+          "month": {
+            "many": "%{count} months"
+          },
+          "year": {
+            "many": "%{count} years"
+          }
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "many": "then %{count} payments of %{total_price} each"
+          }
+        }
+      },
+      "contextual_availability": {
+        "title": {
+          "many": "Products unavailable"
+        },
+        "products_not_available": {
+          "many": "These products will be removed from your cart because they are not available in your country/region."
+        },
+        "all_products_in_cart_unavailable": {
+          "many": "These products are not available in your country/region."
+        }
+      },
+      "throttle": {
+        "estimated_wait_time": {
+          "many": "Estimated waiting time: {{count}} minutes"
+        }
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "title": {
+            "many": "No delivery available for %{count} items"
+          },
+          "message": {
+            "many": "These items will be removed from your cart because there are no delivery methods available for your address."
+          }
+        }
+      },
+      "pickup_point": {
+        "paginator": {
+          "header": {
+            "many": "Showing %{first} to %{last} of %{count} locations"
+          },
+          "selected_pickup_point_label": {
+            "many": "%{pickup_point_index} of %{count} points"
+          },
+          "selected_page": {
+            "many": "%{first} - %{last} of %{count} points"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "many": "%{count} pickup locations near your location"
+        },
+        "pickup_unavailable_banner_title": {
+          "many": "There are no pickup locations available for your items."
+        }
+      },
+      "review_address_modal": {
+        "subtitle": {
+          "many": "This order will be sent to the address provided by {{merchant}} . Please select a delivery address."
+        }
+      },
+      "local_pickup": {
+        "location_information": {
+          "many": "There are %{count} locations with stock near you."
+        },
+        "paginator": {
+          "label": {
+            "many": "%{first} - %{last} of %{count} stores"
+          }
+        },
+        "reveal_more_label": {
+          "many": "Show more %{count} locations"
+        },
+        "all_stores_far_away": {
+          "title_with_item": {
+            "many": "The nearest location containing your items is %{distance} from %{location}."
+          }
+        },
+        "location_information_far_away": {
+          "many": "There are %{count} locations with your item."
+        },
+        "location_nearby": {
+          "many": "There are %{count} nearest locations with your item."
+        },
+        "location_nearby_short": {
+          "many": "%{count} nearest locations with your item"
+        },
+        "location_far_away": {
+          "many": "%{count} locations with your item"
+        },
+        "toggle_more_locations": {
+          "many": "More %{count} locations"
+        },
+        "pickup_unavailable_banner_title": {
+          "many": "There are no locations that contain your items."
+        },
+        "pickup_unavailable_banner_title_with_country": {
+          "many": "There are no locations that carry your items in the country %{country}"
+        }
+      },
+      "merchandise_unavailable_in_buyer_location": {
+        "remove_items_action": {
+          "many": "Remove unavailable items."
+        }
+      },
+      "remote_merchandise_only": {
+        "detail_item_label": {
+          "many": "{{count}} items"
+        }
+      },
+      "split_delivery": {
+        "inventory_issue_banner": {
+          "heading": {
+            "cannot_be_picked_up": {
+              "many": "%{count} items cannot be removed."
+            },
+            "cannot_be_shipped": {
+              "many": "%{count} items cannot be shipped."
+            }
+          },
+          "remove_item": {
+            "many": "Remove items"
+          },
+          "ship_separately": {
+            "many": "send them separately"
+          },
+          "pick_them_up_in_store": {
+            "many": "pick them up at the store"
+          }
+        }
+      }
+    },
+    "notices": {
+      "order": {
+        "cancel_reason": {
+          "many": "Others"
+        }
+      }
+    },
+    "page_titles": {
+      "search_results": {
+        "many": "Search: %{count} results found for \"%{terms}\""
+      }
+    }
+  },
+  "customer_accounts": {
+    "orders": {
+      "order_list": {
+        "items": {
+          "many": "{{count}} items"
+        }
+      },
+      "order_status": {
+        "delivered_description_gift_card": {
+          "many": "The gift cards were sent by email."
+        },
+        "gift_card_label": {
+          "many": "Gift cards"
+        },
+        "confirmed_gift_card_additional_description": {
+          "many": "Each gift card will be sent in a separate email."
+        },
+        "delivered_description_gift_card_text": {
+          "many": "The gift cards were sent via text message."
+        },
+        "confirmed_gift_card_additional_description_text": {
+          "many": "We will send each gift card in a specific email."
+        },
+        "gift_resend_success": {
+          "many": "Gift cards resent"
+        },
+        "gift_resend_failure": {
+          "many": "There was a problem resending the gift cards. Please try again or contact us."
+        },
+        "tracking_number": {
+          "many": "Tracking numbers"
+        },
+        "gift_card_resend_button": {
+          "many": "Resend gift cards"
+        }
+      }
+    },
+    "order_details": {
+      "image_gallery": {
+        "load_more_items": {
+          "many": "Load more {{count}} items"
+        }
+      },
+      "subtotal_label_with_quantity": {
+        "many": "Subtotal - {{count}} items"
+      },
+      "discount_order_stacking": {
+        "many": "Discounts on your order"
+      }
+    },
+    "B2B": {
+      "orders": {
+        "draft_order_list": {
+          "pending_tab_accessibility_label": {
+            "pending_orders": {
+              "many": "There are {{count}} pending orders."
+            }
+          }
+        }
+      },
+      "draft_order_details": {
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "many": "Your payment was due {{count}} days ago."
+            },
+            "banner_due": {
+              "many": "The payment due date is in {{count}} days."
+            },
+            "banner_overdue_for_single_fulfillment": {
+              "many": "The payment of {{amount}} was due {{count}} days ago. {{link}}"
+            }
+          }
+        }
+      }
+    },
+    "errors": {
+      "banner_title": {
+        "many": "There are {{count}} errors"
+      }
+    },
+    "payment_methods": {
+      "add_payment_method": {
+        "subscription_contracts": {
+          "more_items": {
+            "many": "More {{count}} products"
+          },
+          "product_count": {
+            "many": "{{count}} products"
+          }
+        },
+        "updating_contracts": {
+          "many": "Updating {{count}} subscription contracts..."
+        },
+        "contracts_updated": {
+          "many": "{{count}} updated subscription contracts"
+        }
+      }
+    },
+    "ui_components": {
+      "autocompleteOptionsAvailable": {
+        "many": "{{count}} items available"
+      },
+      "month": {
+        "many": "months"
+      },
+      "mapClusterTitle": {
+        "many": "Cluster of {{number}} markers"
+      }
+    },
+    "date": {
+      "humanize": {
+        "lessThanOneHourAgo": {
+          "many": "{{count}} minutes ago"
+        }
+      }
+    }
+  }
+}

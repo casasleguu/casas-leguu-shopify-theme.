@@ -1,0 +1,146 @@
+{% style %}
+  .promo-section-{{ section.id }} {
+    background: transparent;
+    overflow-x: hidden;      /* trava qualquer overflow horizontal daqui */
+    box-sizing: border-box;
+    max-width: 100%;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+  }
+
+  .promo-grid-{{ section.id }} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ section.settings.grid_gap }}px;
+    width: 100%;
+    margin: 0;               /* evita empurrões laterais */
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  .promo-item-{{ section.id }} {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .promo-item-{{ section.id }} a {
+    display: block;          /* evita comportamento inline que pode “somar” largura */
+    width: 100%;
+    height: 100%;
+    line-height: 0;          /* elimina qualquer espaço extra ao redor do img */
+  }
+
+  .promo-item-{{ section.id }} img, 
+  .promo-item-{{ section.id }} svg {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    transform: translateZ(0); /* ajuda a evitar sub-pixels em alguns navegadores */
+  }
+
+  .promo-item-{{ section.id }} svg {
+    background-color: #f4f4f4; /* Fundo para imagens vazias na personalização */
+  }
+
+  @media (max-width: 768px) {
+    .promo-grid-{{ section.id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<section class="promo-section-{{ section.id }}">
+  <div class="promo-grid-{{ section.id }}">
+    
+    {%- for block in section.blocks -%}
+      <div class="promo-item-{{ section.id }}" {{ block.shopify_attributes }}>
+        <a href="{{ block.settings.link | default: '#' }}">
+          {%- if block.settings.image != blank -%}
+            {%- assign img_alt = block.settings.image.alt | escape -%}
+{{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: img_alt, sizes: '(max-width: 768px) calc(100vw - 40px), calc(50vw - 30px)', widths: '400,600,800,1000' }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </a>
+      </div>
+    {%- endfor -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Grid de Promoções",
+  "settings":[
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaçamento superior",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaçamento inferior",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Espaço entre as imagens",
+      "default": 20
+    }
+  ],
+  "blocks":[
+    {
+      "type": "banner",
+      "name": "Banner",
+      "limit": 4,
+      "settings":[
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem do Banner"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link do Banner",
+          "info": "Para onde o cliente vai ao clicar na imagem"
+        }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name": "Grid de Promoções",
+      "blocks":[
+        {
+          "type": "banner"
+        },
+        {
+          "type": "banner"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

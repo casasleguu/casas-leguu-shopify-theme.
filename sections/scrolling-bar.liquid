@@ -1,0 +1,49 @@
+<div class="shopify-section infinite-bar-section">
+  <style>
+    @keyframes infiniteScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .infinite-bar-wrapper {
+      width: 100%;
+      overflow: hidden;
+      background-color: #2d1d14;
+      padding: 8px 0;
+    }
+
+    .infinite-bar-track {
+      display: flex;
+      gap: 56px;
+      white-space: nowrap;
+      animation: infiniteScroll 20s linear infinite;
+    }
+
+    .infinite-bar-item {
+      color: #fff;
+      font-size: 12px;
+      font-family: "Formular", sans-serif;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+  </style>
+
+  <div class="infinite-bar-wrapper">
+    <div class="infinite-bar-track" id="bar-track">
+      <div class="infinite-bar-item"><b>Free UK Standard Delivery on orders over £59</b></div>
+      <div class="infinite-bar-item"><b>14-Day Money-Back Guarantee</b></div>
+      <div class="infinite-bar-item"><b>Exclusive Offers</b></div>
+      <div class="infinite-bar-item"><b>100% Secure Checkout</b></div>
+    </div>
+  </div>
+
+  <script>
+    const track = document.getElementById('bar-track');
+    const items = Array.from(track.children);
+    items.forEach(item => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  </script>
+</div>

@@ -1,0 +1,107 @@
+<section class="carousel-produtos" style="padding:12px 0; margin:0 auto;">
+  <style>
+    .carousel-produtos, .carousel-produtos * { box-sizing: border-box; }
+    .carousel-produtos { max-width: 100%; overflow-x: hidden; position: relative; }
+
+    /* Trilho mobile com snap e sem padding lateral para não somar largura */
+    .carousel-produtos .product-viewport{
+      display:flex;
+      gap:12px;
+      /* sem padding no mobile */
+      overflow-x:auto;
+      overflow-y:hidden;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      width:100%;
+      min-width:0; /* evita estourar o container */
+      box-sizing: border-box; /* Garantir que o conteúdo não ultrapasse a largura */
+    }
+
+    /* Espaçadores que criam respiro no início e fim sem usar padding */
+    .carousel-produtos .product-viewport::before,
+    .carousel-produtos .product-viewport::after{
+      content:"";
+      flex:0 0 16px;
+    }
+
+    /* Esconde barra de rolagem */
+    .carousel-produtos .product-viewport::-webkit-scrollbar{ display:none; }
+    .carousel-produtos .product-viewport{ scrollbar-width:none; }
+
+    /* Card 1/1 no mobile, ocupando exatamente a largura visível */
+    .carousel-produtos .product-card{
+      flex:0 0 100%;
+      min-inline-size:100%;
+      scroll-snap-align:start;
+      display:grid;
+      place-items:center;
+      aspect-ratio:1/1;
+      background:transparent;
+      border:0;
+      border-radius:12px;
+      text-decoration:none;
+    }
+
+    .carousel-produtos .product-card img{
+      width:100%;           /* Ocupa 100% da largura */
+      height:auto;          /* Altura ajustada automaticamente */
+      object-fit:contain;   /* Garantir que a imagem seja exibida completamente sem cortar */
+      object-position:center; /* Centralizar a imagem */
+      display:block;
+    }
+
+    /* Ajuste para reduzir o tamanho da imagem no mobile */
+    @media (max-width: 768px) {
+      .carousel-produtos .product-card img {
+        max-width: 90%; /* Diminui o tamanho da imagem */
+      }
+    }
+
+    /* Desktop: vira grid e libera overflow */
+    @media (min-width: 769px){
+      .carousel-produtos .product-viewport{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+        gap:16px;
+        padding:0 8px;      /* padding só no desktop, aqui não gera overflow */
+        overflow:visible;
+      }
+      .carousel-produtos .product-viewport::before,
+      .carousel-produtos .product-viewport::after{
+        display:none;       /* sem espaçadores no grid */
+      }
+      .carousel-produtos .product-card{
+        flex:initial;
+        min-inline-size:0;
+        aspect-ratio:4/5;
+      }
+    }
+
+  </style>
+
+  <div class="product-viewport" role="region" aria-label="Carrossel de categorias">
+    <a href="/collections/brincos" class="product-card">
+      <img src="https://cdn.shopify.com/s/files/1/0772/2631/1924/files/Brincos_bfbdb83d-4c3d-4325-8057-3124362c182b.png?v=1754680493" alt="Brincos" loading="lazy" decoding="async">
+    </a>
+    <a href="/collections/colares" class="product-card">
+      <img src="https://cdn.shopify.com/s/files/1/0772/2631/1924/files/colares_8eb28fae-71c8-4470-bae1-b6c92008ec5f.png?v=1754680493" alt="Colares" loading="lazy" decoding="async">
+    </a>
+    <a href="/collections/aneis" class="product-card">
+      <img src="https://cdn.shopify.com/s/files/1/0772/2631/1924/files/aneis_18ea8ad6-ccdc-492f-8581-6109a5335a07.png?v=1754680493" alt="Anéis" loading="lazy" decoding="async">
+    </a>
+    <a href="/collections/pulseiras" class="product-card">
+      <img src="https://cdn.shopify.com/s/files/1/0772/2631/1924/files/pulseiras_f38a940a-8caf-4c32-8cc9-7d555f319be3.png?v=1754680493" alt="Pulseiras" loading="lazy" decoding="async">
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Carrossel Produtos",
+  "tag": "section",
+  "class": "carousel-produtos",
+  "settings": [],
+  "presets": [{ "name": "Carrossel Produtos" }]
+}
+{% endschema %}

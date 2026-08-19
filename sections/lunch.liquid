@@ -1,0 +1,174 @@
+{% schema %}
+{
+  "name": "Grade de Benefícios",
+  "settings": [],
+  "blocks":[
+    {
+      "type": "feature",
+      "name": "Item",
+      "settings":[
+        { "type": "image_picker", "id": "image", "label": "Imagem" },
+        { "type": "text", "id": "title", "label": "Título", "default": "AIR" },
+        { "type": "text", "id": "subtitle", "label": "Subtítulo", "default": "Regulagem Térmica + Secagem Rápida" },
+        { "type": "url", "id": "link", "label": "Link do botão" }
+      ]
+    }
+  ],
+  "presets":[
+    { "name": "Grade de Benefícios", "category": "Seções personalizadas" }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.features-grid {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 0;
+  align-items: flex-start;
+  /* Adicionado para criar o efeito de "encaixe" no mobile */
+  scroll-snap-type: x mandatory; 
+  -webkit-overflow-scrolling: touch;
+}
+.features-grid::-webkit-scrollbar { display: none; }
+
+.feature-item {
+  position: relative;
+  flex: 1 0 16.66%;
+  min-width: 16.66%;
+  height: auto;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  /* Adicionado para encaixar cada item corretamente */
+  scroll-snap-align: start; 
+}
+
+.feature-item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform .4s;
+  display: block;
+}
+
+.feature-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: background .4s;
+  z-index: 1;
+}
+.feature-item:hover::before { background: rgba(0,0,0,.2); }
+.feature-item:hover img { transform: scale(1.08); }
+
+.feature-content {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; text-align: center;
+  color: #fff; 
+  pointer-events: none;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+.feature-title { font: 700 24px sans-serif; text-transform: uppercase; margin-bottom: 8px; }
+.feature-subtitle { font: 14px sans-serif; line-height: 1.2; }
+
+.feature-link {
+  position: absolute;
+  bottom: 24px; left: 50%;
+  transform: translateX(-50%);
+  font: 14px sans-serif; color: #fff;
+  text-decoration: none; border-bottom: 1px solid #fff;
+  padding-bottom: 2px;
+  pointer-events: none;
+  z-index: 2;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Responsividade */
+@media (max-width:1200px){ .feature-item{flex:1 0 20%;min-width:20%;} }
+@media (max-width:992px) { .feature-item{flex:1 0 25%;min-width:25%;} }
+@media (max-width:768px) { .feature-item{flex:1 0 33.33%;min-width:33.33%;} }
+@media (max-width:576px) { .feature-item{flex:1 0 50%;min-width:50%;} }
+@media (max-width:400px) { .feature-item{flex:1 0 100%;min-width:100%;} }
+{% endstylesheet %}
+
+<div class="features-grid" id="features-grid-{{ section.id }}">
+  {% for block in section.blocks %}
+    {%- assign item_label = block.settings.title | strip -%}
+    {%- if item_label == blank -%}{%- assign item_label = block.settings.subtitle | strip -%}{%- endif -%}
+    {%- if item_label == blank -%}{%- assign item_label = 'View collection' -%}{%- endif -%}
+    <a href="{{ block.settings.link | default: '#' }}" class="feature-item" aria-label="{{ item_label | escape }}">
+      {% if block.settings.image != blank %}
+        <img
+  src="{{ block.settings.image | image_url: width: 800 }}"
+  srcset="{{ block.settings.image | image_url: width: 400 }} 400w,
+          {{ block.settings.image | image_url: width: 600 }} 600w,
+          {{ block.settings.image | image_url: width: 800 }} 800w,
+          {{ block.settings.image | image_url: width: 1080 }} 1080w"
+  sizes="(max-width: 576px) 100vw, (max-width: 768px) 50vw, 33vw"
+  alt="{{ block.settings.title | escape }}"
+  loading="lazy"
+  width="{{ block.settings.image.width }}"
+  height="{{ block.settings.image.height }}">
+      {% endif %}
+      <div class="feature-content">
+        <div class="feature-title">{{ block.settings.title }}</div>
+        <div class="feature-subtitle">{{ block.settings.subtitle }}</div>
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const grid = document.getElementById("features-grid-{{ section.id }}");
+  let autoScrollInterval;
+
+  function startAutoScroll() {
+    // Aplica apenas em telas de mobile/tablet (768px ou menor)
+    if (window.innerWidth <= 768) {
+      // Limpa qualquer intervalo anterior para não duplicar
+      clearInterval(autoScrollInterval);
+      
+      autoScrollInterval = setInterval(() => {
+        if (!grid) return;
+        
+        // Pega a largura exata de um item (banner)
+        const itemWidth = grid.querySelector('.feature-item').clientWidth;
+        
+        // Verifica se chegou no final do carrossel (usamos -10 por margem de erro de pixel)
+        const maxScroll = grid.scrollWidth - grid.clientWidth;
+        
+        if (grid.scrollLeft >= maxScroll - 10) {
+          // Volta para o começo
+          grid.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Vai para o próximo
+          grid.scrollTo({ left: grid.scrollLeft + itemWidth, behavior: 'smooth' });
+        }
+      }, 5000); // 5000ms = 5 segundos
+    } else {
+      // Se a tela for de computador, desativa a rolagem automática
+      clearInterval(autoScrollInterval);
+    }
+  }
+
+  // Inicia ao carregar a página
+  startAutoScroll();
+
+  // Pausa se o usuário encostar na tela (para não atrapalhar caso ele queira ler algo)
+  grid.addEventListener('touchstart', () => clearInterval(autoScrollInterval), {passive: true});
+  
+  // Retoma o scroll automático 5 segundos depois do usuário soltar a tela
+  grid.addEventListener('touchend', () => {
+    setTimeout(startAutoScroll, 5000);
+  }, {passive: true});
+
+  // Atualiza a lógica caso o usuário vire o celular ou redimensione a tela
+  window.addEventListener("resize", startAutoScroll);
+});
+</script>

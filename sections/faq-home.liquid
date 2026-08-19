@@ -1,0 +1,412 @@
+{% comment %}
+  FAQ Industrial Side-by-Side - FULL WIDTH VERSION
+  - Adapted for UK E-commerce Home Page
+  - Sidebar on the left, expandable list on the right.
+  - Added "View Full FAQ" call-to-action box.
+{% endcomment %}
+
+<section id="faq-{{ section.id }}" class="faq-industrial-wrapper">
+  <div class="faq-container-full">
+    <div class="faq-grid">
+      
+      <div class="faq-sidebar">
+        <div class="faq-sticky-content">
+          <span class="faq-tag">{{ section.settings.top_tag }}</span>
+          <h2 class="faq-title">{{ section.settings.title }}</h2>
+          <div class="faq-description">
+            {{ section.settings.description }}
+          </div>
+
+          {% if section.settings.show_contact %}
+            <div class="faq-contact-box">
+              <p class="fc-label">Still have questions?</p>
+              
+              {% if section.settings.phone != blank %}
+                <a href="tel:{{ section.settings.phone }}" class="fc-row">
+                  <span class="fc-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .57 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.03 12.03 0 0 0 2.81.57A2 2 0 0 1 22 16.92z"></path></svg>
+                  </span>
+                  <span>{{ section.settings.phone }}</span>
+                </a>
+              {% endif %}
+
+              {% if section.settings.email != blank %}
+                <a href="mailto:{{ section.settings.email }}" class="fc-row">
+                  <span class="fc-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  </span>
+                  <span>{{ section.settings.email }}</span>
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="faq-list-container">
+        {%- for block in section.blocks -%}
+          <div class="faq-item" {{ block.shopify_attributes }}>
+            <button class="faq-trigger" aria-expanded="false">
+              <span class="faq-number">{{ forloop.index | prepend: '0' }}</span>
+              <span class="faq-question-text">{{ block.settings.question }}</span>
+              <span class="faq-toggle-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 0V12M0 6H12" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-content">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+
+        {%- if section.settings.show_view_all -%}
+          <div class="faq-view-all-box">
+            <p class="fva-text">{{ section.settings.view_all_text }}</p>
+            {%- if section.settings.view_all_link != blank -%}
+              <a href="{{ section.settings.view_all_link }}" class="fva-btn">{{ section.settings.view_all_btn_text }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* --- FONTS & VARIABLES --- */
+
+  :root {
+    --bg-color: {{ section.settings.bg_color }};
+    --text-primary: {{ section.settings.text_color }};
+    --line-color: {{ section.settings.border_color }};
+    --accent-color: {{ section.settings.accent_color }};
+  }
+
+  /* --- FULL WIDTH STRUCTURE --- */
+  .faq-industrial-wrapper {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .faq-container-full {
+    width: 100%;
+    max-width: 100%; 
+    padding: 0 4vw;   
+    margin: 0 auto;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 30% 1fr; 
+    gap: 6vw; 
+    align-items: start;
+  }
+
+  /* --- SIDEBAR --- */
+  .faq-sidebar {
+    position: relative;
+  }
+
+  .faq-sticky-content {
+    position: sticky;
+    top: 60px;
+    padding-right: 20px;
+  }
+
+  .faq-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .faq-title {
+    font-size: clamp(32px, 4vw, 45px); 
+    line-height: 1.1;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0 0 25px 0;
+    letter-spacing: 1px;
+  }
+
+  .faq-description {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin-bottom: 40px;
+    max-width: 90%;
+  }
+
+  /* CONTACT */
+  .faq-contact-box {
+    border-top: 1px solid var(--line-color);
+    padding-top: 30px;
+  }
+  .fc-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .fc-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 13px;
+    margin-bottom: 12px;
+    transition: opacity 0.2s;
+  }
+  .fc-row:hover { opacity: 0.6; }
+  .fc-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    background: rgba(0,0,0,0.04);
+  }
+
+  /* --- FAQ LIST --- */
+  .faq-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .faq-item {
+    border: 1px solid var(--line-color);
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .faq-item:hover {
+    border-color: var(--accent-color);
+  }
+
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text-primary);
+  }
+
+  .faq-number {
+    font-size: 14px;
+    color: var(--accent-color);
+    margin-right: 30px;
+    opacity: 0.8;
+    font-weight: 600;
+  }
+
+  .faq-question-text {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .faq-toggle-icon {
+    width: 24px; height: 24px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--accent-color);
+  }
+  
+  .faq-trigger[aria-expanded="true"] .faq-toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq-answer-content {
+    padding: 0 40px 35px 85px; 
+    font-size: 15px;
+    line-height: 1.8;
+    opacity: 0.8;
+  }
+
+  /* --- VIEW ALL FULL FAQ CTA --- */
+  .faq-view-all-box {
+    margin-top: 25px;
+    padding: 40px 30px;
+    border: 1px solid var(--line-color);
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .fva-text {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 auto 20px auto;
+    max-width: 500px;
+    opacity: 0.8;
+  }
+
+  .fva-btn {
+    display: inline-block;
+    padding: 14px 36px;
+    background: var(--text-primary);
+    color: var(--bg-color);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .fva-btn:hover {
+    background: var(--accent-color);
+    color: #fff;
+  }
+
+  /* --- MOBILE RESPONSIVENESS --- */
+  @media (max-width: 991px) {
+    .faq-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    .faq-sticky-content {
+      position: static;
+      padding-right: 0;
+    }
+    .faq-title { font-size: 36px; }
+    .faq-container-full { padding: 0 20px; }
+    
+    .faq-trigger { padding: 25px 20px; }
+    .faq-answer-content { padding: 0 20px 25px 20px; }
+    .faq-number { display: none; }
+    .faq-view-all-box { padding: 30px 20px; }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const section = document.getElementById('faq-{{ section.id }}');
+    if (!section) return;
+
+    const triggers = section.querySelectorAll('.faq-trigger');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        const content = trigger.nextElementSibling;
+
+        triggers.forEach(other => {
+          if (other !== trigger) {
+            other.setAttribute('aria-expanded', 'false');
+            other.nextElementSibling.style.maxHeight = null;
+          }
+        });
+
+        if (!isExpanded) {
+          trigger.setAttribute('aria-expanded', 'true');
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          trigger.setAttribute('aria-expanded', 'false');
+          content.style.maxHeight = null;
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Home FAQ",
+  "settings":[
+    { "type": "header", "content": "Left Sidebar" },
+    { "type": "text", "id": "top_tag", "label": "Top Tag", "default": "QUESTIONS & ANSWERS" },
+    { "type": "text", "id": "title", "label": "Main Title", "default": "FREQUENTLY ASKED QUESTIONS" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Check out the answers to the most common questions about our products and deliveries." },
+    
+    { "type": "header", "content": "Contact Info" },
+    { "type": "checkbox", "id": "show_contact", "label": "Show Contact Info", "default": true },
+    { "type": "text", "id": "phone", "label": "Phone (Optional)", "default": "+44" },
+    { "type": "text", "id": "email", "label": "Support Email", "default": "support@kernleather.com" },
+
+    { "type": "header", "content": "Full FAQ Link Button" },
+    { "type": "checkbox", "id": "show_view_all", "label": "Show 'View Full FAQ' box", "default": true },
+    { "type": "textarea", "id": "view_all_text", "label": "Message Text", "default": "Looking for more information? Check out our complete FAQ page for all the details." },
+    { "type": "text", "id": "view_all_btn_text", "label": "Button Text", "default": "View Full FAQ" },
+    { "type": "url", "id": "view_all_link", "label": "Button Link" },
+
+    { "type": "header", "content": "Style & Colors" },
+    { "type": "color", "id": "bg_color", "label": "Section Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text Color", "default": "#1a1a1a" },
+    { "type": "color", "id": "border_color", "label": "Border/Line Color", "default": "#e8e2d8" },
+    { "type": "color", "id": "accent_color", "label": "Accent Color (Numbers & Icons)", "default": "#8b6914" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 150, "step": 5, "unit": "px", "label": "Top Padding", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 150, "step": 5, "unit": "px", "label": "Bottom Padding", "default": 80 }
+  ],
+  "blocks":[
+    {
+      "type": "faq_item",
+      "name": "Question",
+      "settings":[
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name": "Home FAQ",
+      "blocks":[
+        { 
+          "type": "faq_item",
+          "settings": {
+            "question": "What are your shipping options and delivery times?",
+            "answer": "<p>We offer Standard Tracked Shipping (8–20 business days) for £4.99 (Free over £59), and 'Skip the Line' Shipping (5–17 business days) for £9.99. Processing time is typically 1–3 business days.</p>"
+          }
+        },
+        { 
+          "type": "faq_item",
+          "settings": {
+            "question": "Could there be additional customs or import charges?",
+            "answer": "<p>Our prices include UK VAT. However, as our products are shipped from outside the UK, additional customs duties or import charges may apply depending on the value and nature of the goods. These are the responsibility of the recipient.</p>"
+          }
+        },
+        { 
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Under the Consumer Contracts Regulations 2013, you have the right to cancel your order within <strong>14 calendar days</strong> of receiving your goods, without giving any reason. Standard, non-personalised leather goods are fully eligible for return.</p>"
+          }
+        },
+        { 
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I track my order?",
+            "answer": "<p>Yes! Once your order has been dispatched, you will receive a tracking number via email. You can use this number on our Track Your Order page to follow the progress of your delivery in real time.</p>"
+          }
+        },
+        { 
+          "type": "faq_item",
+          "settings": {
+            "question": "What type of leather do your products use?",
+            "answer": "<p>Our products are crafted from high-quality <strong>vegan leather</strong>. We are committed to offering 100% vegan, cruelty-free alternatives that combine premium style with sustainability and ethical production.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
