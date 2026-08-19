@@ -1,0 +1,250 @@
+<!doctype html>
+
+{%- assign direction = 'ltr' -%}
+{%- case request.locale.iso_code -%}
+  {%- when 'ar' or 'arc' or 'dv' or 'fa' or 'ha' or 'he' or 'kwh' or 'ks' or 'ku' or 'ps' or 'ur' or 'yi' -%}
+    {%- assign direction = 'rtl' -%}
+{%- endcase -%}
+
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ direction }}">
+  <head>
+    <!-- INICIO ADICIONE SEUS PIXELS AQUI -->
+
+
+
+    {% include 'dataLayer-allPages' %}
+
+    
+  <!-- FIM DO ADICIONE SEUS PIXELS AQUI -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="{{ settings.header_background }}">
+
+    {%- if settings.favicon -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '96x96' }}" type="image/png">
+    {%- endif -%}
+
+    <title>{% if page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% endif %}</title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- unless settings.heading_font.system? and settings.text_font.system? -%}
+    {%- endunless -%}
+
+    {%- comment -%}Preload de recursos críticos{%- endcomment -%}
+    <link rel="preload" as="style" href="{{ 'theme.min.css' | asset_url }}">
+    <link rel="preload" as="script" href="{{ 'vendor.js' | asset_url }}">
+    <link rel="preload" as="script" href="{{ 'theme.min.js' | asset_url }}">
+
+    {%- if request.page_type == 'product' -%}
+      {%- assign selected_media = product.selected_variant.featured_media | default: product.featured_media -%}
+
+      <link rel="preload" as="fetch" href="{{ product.url }}.js" crossorigin>
+      <link rel="preload" as="image" fetchpriority="high" imagesizes="(max-width: 999px) calc(100vw - 48px), 640px" imagesrcset="{% render 'image-attributes', image: selected_media, sizes: '400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800', sizes_only: true %}">
+
+      {%- if product.media.size > 1 -%}
+        <link rel="preload" as="script" href="{{ 'flickity.js' | asset_url }}">
+      {%- endif -%}
+    {%- elsif request.page_type == 'collection' and collection.image -%}
+      <link rel="preload" as="image" media="(max-width: 740px)" imagesizes="100vw" imagesrcset="{% render 'image-attributes', image: collection.image, sizes: '400,500,600,700,800,900,1000', height_constraint: 600, crop: 'center', sizes_only: true %}">
+      <link rel="preload" as="image" media="(min-width: 741px)" imagesizes="100vw" imagesrcset="{% render 'image-attributes', image: collection.image, sizes: '600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600', sizes_only: true %}">
+    {%- endif -%}
+
+    {% render 'social-meta-tags' %}
+    {% render 'microdata-schema' %}
+    {% render 'visionlcp' %}
+    {% render 'css-variables', direction: direction %}
+    {% render 'js-variables', direction: direction %}
+
+    <link rel="stylesheet" href="{{ 'theme.min.css' | asset_url }}">
+
+    {%- comment -%}
+      CORREÇÃO: Font Awesome carregado de forma assíncrona (não-blocking).
+      NOTA: Idealmente substituir por SVGs inline e remover completamente.
+      Atualizado de beta 6.0.0-beta3 para versão estável.
+    {%- endcomment -%}
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></noscript>
+
+    <script src="{{ 'vendor.js' | asset_url }}" defer></script>
+    <script src="{{ 'theme.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'custom.js' | asset_url }}" defer></script>
+
+    {{ content_for_header }}
+
+    {% render "setbg" %}
+
+    {%- comment -%}
+      CSS que estava no final do body — movido para o head para evitar flash
+    {%- endcomment -%}
+    <style>
+      .shopify-payment-button { display: none !important; }
+      {%- if template contains "product" -%}
+        .areviews_rating { display: none !important; }
+      {%- endif -%}
+    </style>
+</head>
+
+  {%- assign feature_classes = '' -%}
+
+  {%- if settings.show_image_zoom -%}
+    {% assign feature_classes = feature_classes | append: ' features--image-zoom' %}
+  {%- endif -%}
+
+  <body class="no-focus-outline {{ feature_classes }}" data-instant-allow-query-string>
+    {%- comment -%}Common SVG definitions{%- endcomment -%}
+    <svg class="visually-hidden">
+      <linearGradient id="rating-star-gradient-half">
+        <stop offset="50%" stop-color="rgb(var(--product-star-rating))" />
+        <stop offset="50%" stop-color="rgb(var(--product-star-rating))" stop-opacity="0.4" />
+      </linearGradient>
+    </svg>
+
+    {%- comment -%}
+      CORREÇÃO: jQuery hospedado localmente no Shopify CDN.
+      Faça upload do jquery-3.7.1.min.js em Assets antes de usar esta versão.
+      Se ainda não fez o upload, descomente a linha externa abaixo temporariamente.
+    {%- endcomment -%}
+    <script src="{{ 'jquery-3.7.1.min.js' | asset_url }}" defer></script>
+    {%- comment -%} Fallback caso ainda não tenha feito upload do jQuery local:
+    <script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    {%- endcomment -%}
+
+    <a href="#main" class="visually-hidden skip-to-content">{{ 'general.accessibility.skip_to_content' | t }}</a>
+    <loading-bar class="loading-bar"></loading-bar>
+
+    {%- if request.page_type != 'gift_card' and request.page_type != 'password' -%}
+      {% section 'barra-topo-vision' %}
+      {%- section 'announcement-bar' -%}
+      {%- section 'popup' -%}
+      {%- section 'header' -%}
+
+      {%- unless settings.cart_type == 'page' or request.page_type == 'cart' -%}
+        {%- section 'mini-cart' -%}
+      {%- endunless -%}
+    {%- endif -%}
+
+    <div id="main" role="main" class="anchor">
+      {%- if request.page_type == 'collection' or request.page_type == 'search' -%}
+        {%- assign active_filters_count = 0 -%}
+
+        {%- if request.page_type == 'collection' -%}
+          {%- assign filters = collection.filters -%}
+        {%- else -%}
+          {%- assign filters = search.filters -%}
+        {%- endif -%}
+
+        {%- for filter in filters -%}
+          {%- if filter.type == 'list' -%}
+            {%- assign active_filters_count = active_filters_count | plus: filter.active_values.size -%}
+          {%- elsif filter.type == 'price_range' and filter.min_value.value or filter.max_value.value -%}
+            {%- assign active_filters_count = active_filters_count | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- assign is_toolbar_collapsed = false -%}
+
+        {%- if request.page_type == 'search' and search.results.first.object_type != 'product' and search.results_count > 0 -%}
+          {%- assign is_toolbar_collapsed = true -%}
+        {%- endif -%}
+
+        <div id="mobile-facet-toolbar" class="mobile-toolbar {% if is_toolbar_collapsed %}is-collapsed{% endif %} hidden-lap-and-up">
+          <button is="toggle-button" class="mobile-toolbar__item mobile-toolbar__item--filters {% if active_filters_count > 0 %}has-filters{% endif %}" aria-expanded="false" aria-controls="facet-filters" style="display: none">
+            {%- render 'icon' with 'filters' -%}
+            <span class="mobile-toolbar__item-label">{{- 'collection.general.filters' | t -}}</span>
+          </button>
+
+          <button is="toggle-button" class="mobile-toolbar__item mobile-toolbar__item--sort" aria-expanded="false" aria-controls="sort-by-popover" style="display: none">
+            <span class="mobile-toolbar__item-label">{{- 'collection.general.sort_by' | t -}}</span>
+            {%- render 'icon' with 'chevron' -%}
+          </button>
+        </div>
+      {%- endif -%}
+
+      {{ content_for_layout }}
+
+      {%- unless request.page_type == 'index' or request.page_type == 'password' or request.page_type == 'gift_card' -%}
+        {%- section 'static-text-with-icons' -%}
+        {%- section 'static-newsletter' -%}
+      {%- endunless -%}
+    </div>
+
+    {%- comment -%}
+      CORREÇÃO: Ionicons REMOVIDO.
+      Motivo: Você já usa Font Awesome — duas bibliotecas de ícones é redundante.
+      Se precisar de ícones específicos do Ionicons, substitua por SVGs inline.
+      
+      Também foram removidos milhares de caracteres de espaço em branco
+      que estavam entre as tags de script do Ionicons.
+    {%- endcomment -%}
+
+    {%- if request.page_type != 'gift_card' and request.page_type != 'password' -%}
+      {%- section 'footer' -%}
+    {%- endif -%}
+
+    {%- if settings.show_sticky_whats -%}
+      {% render 'stickywhats' %}
+    {%- endif -%}
+
+    {%- comment -%}
+      CORREÇÃO: Size Charts movido para o final do body e condicional a produto.
+      Antes estava no <head> bloqueando renderização de TODAS as páginas.
+    {%- endcomment -%}
+    {%- if template contains 'product' -%}
+      {% render 'sizechartsrelentless' %}
+    {%- endif -%}
+    
+    <script>
+  // Otimiza imagens do CDN Shopify automaticamente
+  (function() {
+    function optimizeShopifyImages() {
+      document.querySelectorAll('img[src*="/cdn/shop/"]').forEach(function(img) {
+        // Pula imagens que já têm srcset bem definido
+        if (img.srcset && img.srcset.split(',').length > 3) return;
+        
+        // Pega o tamanho real exibido na tela
+        var displayWidth = img.getBoundingClientRect().width;
+        if (displayWidth === 0) return;
+        
+        // Multiplica por 2 para telas retina
+        var targetWidth = Math.ceil(displayWidth * 2);
+        
+        // Limita para não pedir imagens minúsculas
+        if (targetWidth < 50) return;
+        
+        // Arredonda para o próximo múltiplo de 100 (cache-friendly)
+        targetWidth = Math.ceil(targetWidth / 100) * 100;
+        
+        var src = img.src;
+        
+        // Substitui o parâmetro width na URL do CDN Shopify
+        if (src.includes('width=')) {
+          var newSrc = src.replace(/width=\d+/, 'width=' + targetWidth);
+          if (newSrc !== src) img.src = newSrc;
+        }
+      });
+    }
+    
+    // Executa após o carregamento completo
+    if (document.readyState === 'complete') {
+      optimizeShopifyImages();
+    } else {
+      window.addEventListener('load', optimizeShopifyImages);
+    }
+    
+    // Reexecuta quando a janela é redimensionada
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(optimizeShopifyImages, 300);
+    });
+  })();
+</script>
+
+  </body>
+</html>
